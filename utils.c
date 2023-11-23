@@ -40,6 +40,18 @@ int	ft_player_valid(t_mapp *config)
 		return (0);
 }
 
+void	trim_trailing_whitespace(char *str)
+{
+	int	i;
+
+	i = ft_strlen(str) - 1;
+	while (i >= 0 && (str[i] == ' ' || str[i] == '\n' || str[i] == '\t'))
+	{
+		str[i] = '\0';
+		i--;
+	}
+}
+
 char	*skip_spaces(char *str)
 {
 	while (*str && (*str == ' ' || *str == '\t'))

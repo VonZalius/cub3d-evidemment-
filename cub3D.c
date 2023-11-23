@@ -79,14 +79,13 @@ char	*array_to_char(char **array)
 int	main(int argc, char **argv)
 {
 	t_progr	progr;
-	t_mapp	parsing;
+	//t_mapp	parsing;
 
 	//ft_check_args(argc, argv);
 	//ft_check_map(argv);
 
-	if (main_parsing(argc, argv, &parsing) == 1)
+	if (main_parsing(argc, argv, &progr.mapp) == 1)
 		return (0);
-
 
 
 	/*---------- Window init ----------*/
@@ -95,24 +94,24 @@ int	main(int argc, char **argv)
 
 	/*---------- Map init ----------*/
 	progr.map.tiles_edge = 100;
-	progr.map.celling = parsing.ceiling_color;
-	progr.map.floor = parsing.floor_color;
+	progr.map.celling = progr.mapp.ceiling_color;
+	progr.map.floor = progr.mapp.floor_color;
 	progr.map.w_x_c = progr.window.x;
 	progr.map.w_y_c = progr.window.y;
 
 	/*---------- Player init ----------*/
 	progr.player.move = 10;
-	progr.player.speed = 0.7;
-	//printf ("PLAYER %i %i\n", parsing.player_pos_x, parsing.player_pos_x);
-	progr.player.co_x = parsing.player_pos_y * progr.map.tiles_edge + (progr.map.tiles_edge / 2);
-	progr.player.co_y = parsing.player_pos_x * progr.map.tiles_edge + (progr.map.tiles_edge / 2);
+	progr.player.speed = 0.2;
+	//printf ("PLAYER %i %i\n", progr.mapp.player_pos_x, progr.mapp.player_pos_x);
+	progr.player.co_x = progr.mapp.player_pos_y * progr.map.tiles_edge + (progr.map.tiles_edge / 2);
+	progr.player.co_y = progr.mapp.player_pos_x * progr.map.tiles_edge + (progr.map.tiles_edge / 2);
 	progr.player.vue_x = 0;
 	progr.player.vue_y = -1;
 	progr.player.plan_x = 0.90;
 	progr.player.plan_y = 0;
 	
 	/*XXXXXXXXXX FAKE WALL XXXXXXXXXX*/
-	progr.map.map_tab = parsing.map_array;
+	progr.map.map_tab = progr.mapp.map_array;
 	progr.map.map = array_to_char(progr.map.map_tab);
 	//printf("XXX %s\n", array_to_char(progr.map.map_tab));
 
@@ -131,6 +130,11 @@ int	main(int argc, char **argv)
 
     /*printf("Liste créée : ");
     afficher_liste(progr.element);*/
+	if (ft_textures(&progr.mapp, &progr) != 1)
+	{
+		printf ("No good textures\n");
+		return (0);
+	}
 
 
 	ft_remplissage(&progr);
@@ -158,8 +162,11 @@ int	main(int argc, char **argv)
 	mlx_pixel_put(progr.mlx, progr.window.ref, progr.player.co_x + progr.player.plan_x * 10, progr.player.co_y + progr.player.plan_y * 10, 16777215);
 	mlx_pixel_put(progr.mlx, progr.window.ref, progr.player.co_x - progr.player.plan_x * 10, progr.player.co_y - progr.player.plan_y * 10, 16777215);*/
 
-	mlx_key_hook(progr.window.ref, *ft_input, &progr);
-	mlx_loop_hook(progr.mlx, 0, &progr);
+	mlx_hook(progr.window.ref, 2, 1L << 0, *ft_input, &progr);
+	//mlx_hook(progr.window.ref, 17, 1L << 0, *ft_input, &progr);
+
+	//mlx_key_hook(progr.window.ref, *ft_input, &progr);
+	//mlx_loop_hook(progr.mlx, 0, &progr);
 	mlx_loop(progr.mlx);
 
     liberer_liste(progr.element);

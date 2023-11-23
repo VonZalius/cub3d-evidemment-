@@ -4,23 +4,23 @@ int ft_get_color(t_progr *cube, t_element *node, double x_p, double y_p)
 {
     int color;
 
-    cube = cube;
     x_p = x_p;
     y_p = y_p;
+    color = 200000;
 
     if (node->side == 1)
     {
         if (node->ray_dir_y < 0)
-            color = 10000 + node->wall_x * 100;           // Face au SUD
+            color = get_pixel_color(&cube->mapp.north_texture, (x_p * cube->mapp.north_texture.width), (y_p * cube->mapp.north_texture.height));           // Face au SUD
         if (node->ray_dir_y >= 0)
-            color = 30000 + node->wall_x * 100;          // Face au NORD
+            color = get_pixel_color(&cube->mapp.south_texture, (x_p * cube->mapp.south_texture.width), (y_p * cube->mapp.south_texture.height));          // Face au NORD
     }
     else
     {
         if (node->ray_dir_x < 0)
-            color = 50000 + node->wall_x * 100;         // Face à l'EST
+            color = get_pixel_color(&cube->mapp.west_texture, (x_p * cube->mapp.west_texture.width), (y_p * cube->mapp.west_texture.height));         // Face à l'EST
         if (node->ray_dir_x >= 0)
-            color = 70000 + node->wall_x * 100;         // Face à l'OUEST
+            color = get_pixel_color(&cube->mapp.east_texture, (x_p * cube->mapp.east_texture.width), (y_p * cube->mapp.east_texture.height));         // Face à l'OUEST
     }
 
     return (color);
@@ -35,7 +35,7 @@ void    ft_draw_2(t_progr *cube, t_element *node, int y_w)
 
     x_w = node->index - 1;
     x_p = node->wall_x;
-    y_p = ((double)y_w - node->draw_start - 1) / (node->draw_end - node->draw_start);
+    y_p = ((double)y_w - (((-node->line_height) / 2) + (cube->map.w_y_c / 2)) - 1) / (((node->line_height / 2) + (cube->map.w_y_c / 2)) - (((-node->line_height) / 2) + (cube->map.w_y_c / 2)));
 
     color = ft_get_color(cube, node, x_p, y_p);
 

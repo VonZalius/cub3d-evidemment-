@@ -113,6 +113,33 @@ typedef struct s_element {
     struct s_element* suivant;
 }				t_element;
 
+
+typedef struct s_texture
+{
+	unsigned int	*data;
+	int				width;
+	int				height;
+}					t_texture;
+
+typedef struct s_mapp
+{
+	t_texture		north_texture;
+	t_texture		south_texture;
+	t_texture		west_texture;
+	t_texture		east_texture;
+	char	*north_texture_path;
+	char	*south_texture_path;
+	char	*west_texture_path;
+	char	*east_texture_path;
+	int		floor_color;
+	int		ceiling_color;
+	char	**map_array;
+	int		map_size;
+	int		config_done;
+	int		player_pos_x;
+	int		player_pos_y;
+}			t_mapp;
+
 /* MAIN STRUCT */
 typedef struct s_progr {
 	void		*mlx;
@@ -122,22 +149,8 @@ typedef struct s_progr {
 	t_player	player;
 	t_map		map;
 	t_element	*element;
+	t_mapp		mapp;
 }				t_progr;
-
-typedef struct s_mapp
-{
-	char	*north_texture;
-	char	*south_texture;
-	char	*west_texture;
-	char	*east_texture;
-	int		floor_color;
-	int		ceiling_color;
-	char	**map_array;
-	int		map_size;
-	int		config_done;
-	int		player_pos_x;
-	int		player_pos_y;
-}			t_mapp;
 // ---------------------------------
 // FUNCTIONS
 
@@ -181,5 +194,9 @@ int			flood_fill(t_mapp *config, char **map_copy);
 int			flood_fill_util(char **map, int x, int y, int map_size);
 int			ft_player_valid(t_mapp *config);
 int			main_parsing(int argc, char **argv, t_mapp *config);
+
+unsigned int	get_pixel_color(t_texture *texture, int x, int y);
+int				ft_textures(t_mapp *config, t_progr *prog);
+void			trim_trailing_whitespace(char *str);
 
 #endif

@@ -55,7 +55,6 @@ void	ft_put_wall(t_progr *progr)
 		{
 			if (ft_is_wall(j * progr->map.tiles_edge, k * progr->map.tiles_edge, progr) == 1)
 			{
-				printf("SALUUT 4\n");
 				ft_put_pixel_to_img(progr, j * 10, k * 10, 0xFFFFFF);
 				ft_put_pixel_to_img(progr, (j + 0.5) * 10, k * 10, 0xFFFFFF);
 				ft_put_pixel_to_img(progr, (j + 1) * 10, k * 10, 0xFFFFFF);

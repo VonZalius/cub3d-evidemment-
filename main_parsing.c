@@ -28,10 +28,10 @@ void	ft_check_args(int argc, char **argv)
 
 void	ft_init(t_mapp *config)
 {
-	config->north_texture = NULL;
-	config->south_texture = NULL;
-	config->west_texture = NULL;
-	config->east_texture = NULL;
+	config->north_texture_path = NULL;
+	config->south_texture_path = NULL;
+	config->west_texture_path = NULL;
+	config->east_texture_path = NULL;
 	config->floor_color = -1;
 	config->ceiling_color = -1;
 	config->map_array = NULL;
