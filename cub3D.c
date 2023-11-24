@@ -105,30 +105,34 @@ int	main(int argc, char **argv)
 	//printf ("PLAYER %i %i\n", progr.mapp.player_pos_x, progr.mapp.player_pos_x);
 	progr.player.co_x = progr.mapp.player_pos_y * progr.map.tiles_edge + (progr.map.tiles_edge / 2);
 	progr.player.co_y = progr.mapp.player_pos_x * progr.map.tiles_edge + (progr.map.tiles_edge / 2);
-	/*if (progr.mapp.)
+	if (progr.mapp.player_dir == 'N')
 	{
-		
-	}*/
-		/*Vue Nord*/
 		progr.player.vue_x = 0;
 		progr.player.vue_y = -1;
 		progr.player.plan_x = 0.90;
 		progr.player.plan_y = 0;
-		/*Vue Sud
+	}
+	else if (progr.mapp.player_dir == 'S')
+	{
 		progr.player.vue_x = 0;
 		progr.player.vue_y = 1;
 		progr.player.plan_x = -0.90;
-		progr.player.plan_y = 0;*/
-		/*Vue Est
+		progr.player.plan_y = 0;
+	}
+	else if (progr.mapp.player_dir == 'E')
+	{
 		progr.player.vue_x = 1;
 		progr.player.vue_y = 0;
 		progr.player.plan_x = 0;
-		progr.player.plan_y = 0.90;*/
-		/*Vue West
+		progr.player.plan_y = 0.90;
+	}
+	else if (progr.mapp.player_dir == 'W')
+	{
 		progr.player.vue_x = -1;
 		progr.player.vue_y = 0;
 		progr.player.plan_x = 0;
-		progr.player.plan_y = -0.90;*/
+		progr.player.plan_y = -0.90;
+	}
 	
 	/*XXXXXXXXXX FAKE WALL XXXXXXXXXX*/
 	progr.map.map_tab = progr.mapp.map_array;

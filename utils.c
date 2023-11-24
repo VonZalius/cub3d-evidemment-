@@ -6,13 +6,13 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 18:39:02 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/17 19:44:04 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/11/24 16:45:13 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	ft_player_valid(t_mapp *config)
+int	ft_player_valid(t_mapp *conf)
 {
 	int		i;
 	size_t	j;
@@ -20,16 +20,17 @@ int	ft_player_valid(t_mapp *config)
 
 	i = 0;
 	player = 0;
-	while (i < config->map_size)
+	while (i < conf->map_size)
 	{
 		j = 0;
-		while (config->map_array[i][j] != '\0')
+		while (conf->map_array[i][j] != '\0')
 		{
-			if (config->map_array[i][j] == 'N'
-				|| config->map_array[i][j] == 'S'
-				|| config->map_array[i][j] == 'W'
-				|| config->map_array[i][j] == 'E')
+			if (conf->map_array[i][j] == 'N' || conf->map_array[i][j] == 'S'
+				|| conf->map_array[i][j] == 'W' || conf->map_array[i][j] == 'E')
+			{
 				player++;
+				conf->player_dir = conf->map_array[i][j];
+			}
 			j++;
 		}
 		i++;

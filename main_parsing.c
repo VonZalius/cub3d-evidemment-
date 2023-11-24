@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.c                                            :+:      :+:    :+:   */
+/*   main_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:02:19 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/17 18:51:40 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/11/24 16:44:48 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_init(t_mapp *config)
 	config->config_done = 0;
 	config->player_pos_x = -1;
 	config->player_pos_y = -1;
+	config->player_dir = '\0';
 }
 
 int	main_parsing(int argc, char **argv, t_mapp *config)
