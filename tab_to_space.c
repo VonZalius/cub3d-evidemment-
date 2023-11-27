@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 18:37:18 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/17 18:48:11 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/11/27 21:17:37 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,26 @@ int	count_tabs(const char *line)
 	return (count);
 }
 
-char	*allocate_new_line(const char *line, int tab_count)
+/*char	*allocate_new_line(const char *line, int tab_count)
 {
 	int	new_len;
 
 	new_len = strlen(line) + 3 * tab_count;
 	return ((char *)malloc(new_len + 1));
+}*/
+
+char	*allocate_new_line(const char *line, int tab_count)
+{
+	int		new_len;
+	char	*new_line;
+
+	new_len = strlen(line) + 3 * tab_count;
+	new_line = (char *)malloc(new_len + 1);
+	if (new_line == NULL)
+		return (NULL);
+	return (new_line);
 }
+
 
 void	replace_tabs_with_spaces(const char *line, char *new_line)
 {

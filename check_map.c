@@ -6,13 +6,11 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 18:37:59 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/17 19:44:06 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/11/26 20:26:08 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-// ATTENTION GESTION ESPACE A VERIFIER !!!!!!!!!!!!!!!!!!!!!!!!
 
 // Vérifiez si vous êtes en dehors des limites de la carte
 // Si la case est déjà visitée ou c'est un mur, elle est valide

@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 18:39:02 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/24 16:45:13 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/11/26 18:58:37 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@ int	ft_player_valid(t_mapp *conf)
 		return (1);
 	else
 		return (0);
+}
+
+int	contains_digit(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (ft_isdigit(line[i]))
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 void	trim_trailing_whitespace(char *str)

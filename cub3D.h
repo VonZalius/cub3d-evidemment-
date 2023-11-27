@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:01:23 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/24 16:33:18 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/11/27 20:49:08 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,17 @@
 # ifndef ANIMATION_FRAMES
 #  define ANIMATION_FRAMES 10
 # endif
+
+// ----------------------------------
+// KEYS
+
+# define KEY_ESC 53
+# define KEY_W 13
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
 
 // ----------------------------------
 // STRUCTS
@@ -79,7 +90,6 @@ typedef struct s_player
 	double		vue_y;
 	double		plan_x;
 	double		plan_y;
-
 }				t_player;
 
 /* map info */
@@ -149,7 +159,8 @@ typedef struct s_mapp
 }			t_mapp;
 
 /* MAIN STRUCT */
-typedef struct s_progr {
+typedef struct s_progr
+{
 	void		*mlx;
 	t_window	window;
 	t_image		img;
@@ -158,18 +169,20 @@ typedef struct s_progr {
 	t_map		map;
 	t_element	*element;
 	t_mapp		mapp;
+	int			key_states[256];
 }				t_progr;
 // ---------------------------------
 // FUNCTIONS
 
-t_window		ft_new_window(void *mlx, int widht, int height, char *name);
+t_window		ft_new_window(t_progr *progr,
+					int widht, int height, char *name);
 t_image			ft_new_sprite(void *mlx, char *path);
 //t_image		ft_new_image(void *mlx, int width, int height);
 
 t_color			new_color(int r, int g, int b, int a);
 void			turn_img_to_color(t_image *image, t_color color);
 
-int				ft_input(int key, t_progr *progr);
+int				ft_input(t_progr *progr);
 int				ft_anime(t_progr *progr);
 
 void			ft_put_wall(t_progr *progr);
@@ -180,6 +193,9 @@ void			ft_put_pixel_to_img(t_progr *progr, int x, int y, int color);
 void			ft_remplissage(t_progr *progr);
 void			raycasting(t_progr *cube);
 void			ft_draw(t_progr *cube, t_element *node);
+int				key_press_handler(int key, t_progr *progr);
+int				key_release_handler(int key, t_progr *progr);
+int				loop_function(t_progr *progr);
 
 void			ft_check_file(char **argv, t_mapp *config);
 void			parse_file(int fd, t_mapp *config);
@@ -202,9 +218,11 @@ int				flood_fill(t_mapp *config, char **map_copy);
 int				flood_fill_util(char **map, int x, int y, int map_size);
 int				ft_player_valid(t_mapp *config);
 int				main_parsing(int argc, char **argv, t_mapp *config);
-
+int				contains_digit(char *line);
 unsigned int	get_pixel_color(t_texture *texture, int x, int y);
 int				ft_textures(t_mapp *config, t_progr *prog);
 void			trim_trailing_whitespace(char *str);
+void			destroy_textures(t_mapp *config);
+void			free_map_array(char **map_array, int map_size);
 
 #endif

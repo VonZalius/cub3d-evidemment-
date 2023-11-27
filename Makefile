@@ -6,12 +6,13 @@
 #    By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 16:04:14 by cmansey           #+#    #+#              #
-#    Updated: 2023/10/31 17:52:15 by cmansey          ###   ########.fr        #
+#    Updated: 2023/11/27 22:51:43 by cmansey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
-SRC = cub3D.c window.c hooks.c struct.c raycasting_1.c draw.c check_map.c main_parsing.c parsing_file1.c parsing_file2.c utils.c tab_to_space.c textures.c
+SRC = cub3D.c window.c hooks.c struct.c raycasting_1.c draw.c check_map.c main_parsing.c \
+parsing_file1.c parsing_file2.c utils.c tab_to_space.c textures.c exit.c
 OBJ = $(SRC:.c=.o)
 
 CC = gcc
@@ -22,26 +23,31 @@ LIBFT = libft
 
 all: $(NAME)
 
-$(NAME):$(OBJ)
-	@make -C $(LIBFT)
-	$(CC) $(CCFLAGS) $(OBJ) -Llibft -lft -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -o $(NAME)
+$(NAME): $(OBJ)
+	@make -C $(LIBFT) > /dev/null 2>&1
+	@$(MAKE) -C mlx/ > /dev/null 2>&1
+	$(CC) $(CCFLAGS) $(OBJ) -L$(LIBFT) -lft -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CCFLAGS) -I/usr/include -Imlx -O3 -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)
-	@make clean -C $(LIBFT)
-
+	@make clean -C $(LIBFT) > /dev/null 2>&1
+	@$(MAKE) clean -C mlx > /dev/null 2>&1
 
 fclean: clean
 	$(RM) $(NAME)
-	@$(RM) -f $(LIBFT)/libft.a
-
-
-mlx:
-	@$(MAKE) re -C mlx/
+	@make fclean -C $(LIBFT) > /dev/null 2>&1
 
 re: fclean all
 
-.PHONY:	all clean fclean re libft ft_printf
+debug: CCFLAGS += -fsanitize=address
+debug: re
+	./$(NAME) map/map1.cub
+
+leak: CCFLAGS = -g3 -O0
+leak: re
+	valgrind --leak-check=full ./$(NAME) map/map1.cub
+
+.PHONY: all clean fclean re debug

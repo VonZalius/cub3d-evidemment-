@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:02:19 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/24 16:44:48 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/11/26 20:47:18 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_check_args(int argc, char **argv)
 	}
 	if (!ft_strnstr(argv[1], ".cub", ft_strlen(argv[1])))
 	{
-		printf("Error\nInvalid type of file.\nInsert .cub file\n");
+		printf("Error\nInvalid type of file.\nInsert .cub file.\n");
 		exit (1);
 	}
 }

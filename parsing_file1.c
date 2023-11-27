@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 18:30:32 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/17 19:44:01 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/11/27 21:35:24 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ int	process_texture_and_color(char *line, t_mapp *config)
 
 int	process_map_line(char *line, t_mapp *config)
 {
-	if (ft_isdigit(line[0]) || line[0] == ' ' || line[0] == '\t')
-	{
-		config->map_array = parse_map(line, config->map_array,
-				&config->map_size);
+	if (!contains_digit(line))
 		return (1);
-	}
-	return (0);
+
+	config->map_array = parse_map(line, config->map_array, &config->map_size);
+	if (!config->map_array)
+		return (-1);
+	return (1);
 }
 
 int	parse_line(char *line, t_mapp *config)
@@ -70,7 +70,6 @@ void	parse_file(int fd, t_mapp *config)
 {
 	char	*line;
 	char	*temp_line;
-	int		i;
 
 	temp_line = get_next_line(fd);
 	while (temp_line != NULL)
@@ -85,16 +84,6 @@ void	parse_file(int fd, t_mapp *config)
 		free(line);
 		temp_line = get_next_line(fd);
 	}
-	printf("North texture: %s\n", config->north_texture_path);
-	printf("South texture: %s\n", config->south_texture_path);
-	printf("West texture: %s\n", config->west_texture_path);
-	printf("East texture: %s\n", config->east_texture_path);
-	printf("Floor color: %d\n", config->floor_color);
-	printf("Ceiling color: %d\n", config->ceiling_color);
-	printf("Map size: %d\n", config->map_size);
-	i = 0;
-	while (i < config->map_size)
-		printf("Map array: %s", config->map_array[i++]);
 }
 
 void	ft_check_file(char **argv, t_mapp *config)
