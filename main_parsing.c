@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:02:19 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/26 20:47:18 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/11/27 23:35:33 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ void	ft_init(t_mapp *config)
 	config->player_pos_x = -1;
 	config->player_pos_y = -1;
 	config->player_dir = '\0';
+	config->north_texture.img_ptr = NULL;
+	config->south_texture.img_ptr = NULL;
+	config->west_texture.img_ptr = NULL;
+	config->east_texture.img_ptr = NULL;
 }
 
 int	main_parsing(int argc, char **argv, t_mapp *config)

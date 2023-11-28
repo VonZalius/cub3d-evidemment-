@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:02:19 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/27 21:33:23 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/11/28 00:38:52 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,38 @@ char	*array_to_char(char **array)
     return cha;
 }*/
 
+/*char *array_to_char(char **array) {
+    char *cha;
+    int i, j, k;
+
+    // Calculer la taille nécessaire
+    i = 0;
+    k = 0;
+    while (array[i] != NULL) {
+        k += strlen(array[i]) + 1; // +1 pour '\n'
+        i++;
+    }
+
+    // Allouer la mémoire
+    cha = malloc(sizeof(char) * (k + 1)); // +1 pour le caractère NULL final
+    if (!cha) {
+        return (NULL);
+    }
+
+    // Copier les chaînes dans cha
+    i = 0;
+    k = 0;
+    while (array[i] != NULL) {
+        j = 0;
+        while (array[i][j] != '\0') {
+            cha[k++] = array[i][j++];
+        }
+        cha[k++] = '\n'; // Ajouter '\n' et incrémenter k
+        i++;
+    }
+    cha[k] = '\0'; // S'assurer que le dernier caractère est NULL
+    return (cha);
+}*/
 
 
 int	main(int argc, char **argv)
@@ -182,6 +214,11 @@ int	main(int argc, char **argv)
 
 	/*---------- Structs init ----------*/
 	progr.mlx = mlx_init();
+	if (!progr.mlx)
+	{
+		printf("Error\nMlx init failed.\n");
+		exit (1);
+	}
 	progr.map.image = mlx_new_image(progr.mlx, progr.window.x, progr.window.y);
 	progr.window = ft_new_window(&progr, progr.window.x,
 			progr.window.y, "cub3D");
@@ -196,9 +233,11 @@ int	main(int argc, char **argv)
 
     /*printf("Liste créée : ");
     afficher_liste(progr.element);*/
+	//LIBERER MEMOIRE????
 	if (ft_textures(&progr.mapp, &progr) != 1)
 	{
 		printf ("No good textures\n");
+		//int ft_close(t_progr *progr);
 		return (0);
 	}
 

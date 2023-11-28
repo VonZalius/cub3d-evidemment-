@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:45:17 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/26 20:26:06 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/11/27 23:35:39 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,18 @@
 // Charge une texture et stocke ses données
 int	load_texture(t_texture *texture, char *file_path, void *mlx_ptr)
 {
-	void	*img;
 	int		bpp;
 	int		size_line;
 	int		endian;
 
-	img = mlx_xpm_file_to_image(mlx_ptr, file_path,
+	texture->img_ptr = mlx_xpm_file_to_image(mlx_ptr, file_path,
 			&texture->width, &texture->height);
-	if (!img)
+	if (!texture->img_ptr)
 	{
 		printf("Error\nInvalid textures\n");
 		return (0);
 	}
-	texture->data = (unsigned int *)mlx_get_data_addr(img,
+	texture->data = (unsigned int *)mlx_get_data_addr(texture->img_ptr,
 			&bpp, &size_line, &endian);
 	return (1);
 }

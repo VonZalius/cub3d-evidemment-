@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:01:23 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/27 20:49:08 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/11/28 00:38:57 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ typedef struct s_element
 
 typedef struct s_texture
 {
+	void			*img_ptr;
 	unsigned int	*data;
 	int				width;
 	int				height;
@@ -222,7 +223,7 @@ int				contains_digit(char *line);
 unsigned int	get_pixel_color(t_texture *texture, int x, int y);
 int				ft_textures(t_mapp *config, t_progr *prog);
 void			trim_trailing_whitespace(char *str);
-void			destroy_textures(t_mapp *config);
+void			destroy_textures(t_progr *progr, t_mapp *config);
 void			free_map_array(char **map_array, int map_size);
 
 #endif

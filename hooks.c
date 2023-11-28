@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:04:31 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/27 21:22:37 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/11/28 00:38:53 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,7 +182,7 @@ int	ft_input(t_progr *progr)
 	}
 	if (progr->key_states[KEY_ESC] == 1)
 	{
-		destroy_textures(&progr->mapp);
+		destroy_textures(progr->mlx, &progr->mapp);
 		free_map_array(progr->mapp.map_array, progr->mapp.map_size);
 		mlx_destroy_window(progr->mlx, progr->window.ref);
 		mlx_destroy_display(progr->mlx);
