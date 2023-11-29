@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 18:33:51 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/27 21:24:43 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/11/29 18:49:13 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,19 @@ char	*realloc_map_array(char *line, char ***map_array, int *size)
 
 char	**add_convline_to_map(char *converted_line, char **map_array, int *size)
 {
-	int	len;
+	int		len;
+	char	**new_array;
 
-	len = ft_strlen(converted_line);
-	map_array[*size] = malloc(len + 1);
+	len = ft_strlen(converted_line) + 1;
+	new_array = ft_realloc(map_array, sizeof(char *)
+			* (*size + 1), sizeof(char*) * (*size + 2));
+	if (!new_array)
+	{
+		free(converted_line);
+		return (NULL);
+	}
+	map_array = new_array;
+	map_array[*size] = malloc(len);
 	if (!map_array[*size])
 	{
 		free(converted_line);
@@ -44,9 +53,10 @@ char	**add_convline_to_map(char *converted_line, char **map_array, int *size)
 	}
 	ft_strcpy(map_array[*size], converted_line);
 	free(converted_line);
-	(*size)++;
+	map_array[++(*size)] = NULL;
 	return (map_array);
 }
+
 
 char	**parse_map(char *line, char **map_array, int *size)
 {
@@ -55,7 +65,10 @@ char	**parse_map(char *line, char **map_array, int *size)
 	converted_line = realloc_map_array(line, &map_array, size);
 	if (!converted_line)
 		return (NULL);
-	return (add_convline_to_map(converted_line, map_array, size));
+	map_array = add_convline_to_map(converted_line, map_array, size);
+	if (!map_array)
+		return (NULL);
+	return (map_array);
 }
 
 int	is_config_complete(t_mapp *config)

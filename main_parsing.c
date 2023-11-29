@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:02:19 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/27 23:35:33 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/11/29 19:28:24 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,12 @@ int	main_parsing(int argc, char **argv, t_mapp *config)
 	else
 	{
 		printf("Error\nMap is not valid.\n");
+		/*free_map_array(config->map_array, config->map_size);
+		free(config->north_texture_path);
+		free(config->south_texture_path);
+		free(config->west_texture_path);
+		free(config->east_texture_path);
+		free(config);*/
 		return (1);
 	}
 }

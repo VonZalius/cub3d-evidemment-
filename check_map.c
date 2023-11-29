@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 18:37:59 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/26 20:26:08 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/11/29 19:49:58 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,14 +114,23 @@ int	ft_map_valid(t_mapp *config)
 		{
 			is_valid = flood_fill(config, map_copy);
 			free_copied_map_array(map_copy, config->map_size);
+			if (is_valid == 0)
+			{
+				printf("Error\nMap is not valid.\n");
+				exit (EXIT_FAILURE);
+			}
 			return (is_valid);
 		}
 		else
 		{
 			printf("Error\nMemory allocation failed for map copy.\n");
-			return (0);
+			exit (EXIT_FAILURE);
 		}
 	}
 	else
-		return (0);
+	{
+		printf("Error\nPlayer is not valid or not found.\n");
+		printf("Check also if the map exist.\n");
+		exit (EXIT_FAILURE);
+	}
 }

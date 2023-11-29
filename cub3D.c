@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:02:19 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/28 00:38:52 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/11/29 19:44:08 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,7 +210,6 @@ int	main(int argc, char **argv)
 	/*XXXXXXXXXX FAKE WALL XXXXXXXXXX*/
 	progr.map.map_tab = progr.mapp.map_array;
 	progr.map.map = array_to_char(progr.map.map_tab);
-	//printf("XXX %s\n", array_to_char(progr.map.map_tab));
 
 	/*---------- Structs init ----------*/
 	progr.mlx = mlx_init();
@@ -234,12 +233,13 @@ int	main(int argc, char **argv)
     /*printf("Liste créée : ");
     afficher_liste(progr.element);*/
 	//LIBERER MEMOIRE????
-	if (ft_textures(&progr.mapp, &progr) != 1)
+	ft_textures(&progr.mapp, &progr);
+	/*if (ft_textures(&progr.mapp, &progr) != 1)
 	{
 		printf ("No good textures\n");
-		//int ft_close(t_progr *progr);
+		int ft_close(t_progr *progr);
 		return (0);
-	}
+	}*/
 
 
 	ft_remplissage(&progr);

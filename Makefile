@@ -6,7 +6,7 @@
 #    By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 16:04:14 by cmansey           #+#    #+#              #
-#    Updated: 2023/11/28 00:38:58 by cmansey          ###   ########.fr        #
+#    Updated: 2023/11/29 19:52:20 by cmansey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,10 +44,10 @@ re: fclean all
 
 debug: CCFLAGS += -fsanitize=address
 debug: re
-	./$(NAME) map/map2.cub
+	./cub3D maps/map2.cub
 
-leak: CCFLAGS += -g3 -O0
-leak: re
-	valgrind --leak-check=full ./$(NAME) map/map2.cub
+valgrind: CCFLAGS += -g3 -O0
+valgrind: re
+	valgrind --leak-check=full ./cub3D maps/map2.cub
 
 .PHONY: all clean fclean re debug

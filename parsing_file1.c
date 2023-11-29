@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 18:30:32 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/27 23:22:04 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/11/29 19:43:57 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,16 @@ int	parse_line(char *line, t_mapp *config)
 	if (config->config_done == 1 && process_map_line(line, config))
 		return (0);
 	printf("Error\nInvalid or incomplete configuration elements\n");
+	/*FREE A GERER
+	free(line);
+	free_map_array(config->map_array, config->map_size);
+	free(config->north_texture_path);
+	free(config->south_texture_path);
+	free(config->west_texture_path);
+	free(config->east_texture_path);
+	free(config);
+	free(config->sprite_texture_path);
+	free(config->map_array);*/
 	exit(EXIT_FAILURE);
 }
 
@@ -94,8 +104,9 @@ void	ft_check_file(char **argv, t_mapp *config)
 	if (fd < 0)
 	{
 		printf("Error\nMap not found.\n");
+		printf("Check the path or rights of the .cub file.\n");
 		close(fd);
-		exit (1);
+		exit (EXIT_FAILURE);
 	}
 	parse_file(fd, config);
 	close(fd);
