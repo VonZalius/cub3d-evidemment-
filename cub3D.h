@@ -225,5 +225,6 @@ int				ft_textures(t_mapp *config, t_progr *prog);
 void			trim_trailing_whitespace(char *str);
 void			destroy_textures(t_progr *progr, t_mapp *config);
 void			free_map_array(char **map_array, int map_size);
+void    		ft_animation(t_progr *progr);
 
 #endif

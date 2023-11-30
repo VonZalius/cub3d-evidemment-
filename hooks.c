@@ -247,6 +247,7 @@ int	loop_function(t_progr *progr)
 	/*ft_put_pixel_to_img(progr, progr->player.co_x + progr->player.vue_x * 10, progr->player.co_y + progr->player.vue_y * 10, 0xFFFFFF);
 	ft_put_pixel_to_img(progr, progr->player.co_x + progr->player.plan_x * 10, progr->player.co_y + progr->player.plan_y * 10, 0xFFFFFF);
 	ft_put_pixel_to_img(progr, progr->player.co_x - progr->player.plan_x * 10, progr->player.co_y - progr->player.plan_y * 10, 0xFFFFFF);*/
+	ft_animation(progr);
 	mlx_put_image_to_window(progr->mlx, progr->window.ref,
 		progr->map.image, 0, 0);
 	return (0);
