@@ -12,7 +12,30 @@
 
 #include "cub3D.h"
 
-/// A REVOIR PROBLEME AVEC PROGR_MLX
+void	destroy_textures_bis(t_mapp *config)
+{
+	if (config->west_texture.img_ptr != NULL)
+	{
+		mlx_destroy_image(NULL, config->west_texture.img_ptr);
+		config->west_texture.img_ptr = NULL;
+	}
+	if (config->west_texture_path != NULL)
+	{
+		free(config->west_texture_path);
+		config->west_texture_path = NULL;
+	}
+	if (config->east_texture.img_ptr != NULL)
+	{
+		mlx_destroy_image(NULL, config->east_texture.img_ptr);
+		config->east_texture.img_ptr = NULL;
+	}
+	if (config->east_texture_path != NULL)
+	{
+		free(config->east_texture_path);
+		config->east_texture_path = NULL;
+	}
+}
+
 void	destroy_textures(t_progr *progr, t_mapp *config)
 {
 	if(progr->mlx)
@@ -37,52 +60,8 @@ void	destroy_textures(t_progr *progr, t_mapp *config)
 		free(config->south_texture_path);
 		config->south_texture_path = NULL;
 	}
-	if (config->west_texture.img_ptr != NULL)
-	{
-		mlx_destroy_image(NULL, config->west_texture.img_ptr);
-		config->west_texture.img_ptr = NULL;
-	}
-	if (config->west_texture_path != NULL)
-	{
-		free(config->west_texture_path);
-		config->west_texture_path = NULL;
-	}
-	if (config->east_texture.img_ptr != NULL)
-	{
-		mlx_destroy_image(NULL, config->east_texture.img_ptr);
-		config->east_texture.img_ptr = NULL;
-	}
-	if (config->east_texture_path != NULL)
-	{
-		free(config->east_texture_path);
-		config->east_texture_path = NULL;
-	}
+	destroy_textures_bis(config);
 }
-
-/*void destroy_texture(t_progr *progr, t_texture *texture) {
-    if (texture && texture->img_ptr) {
-        mlx_destroy_image(progr->mlx, texture->img_ptr);
-        texture->img_ptr = NULL;
-    }
-}
-
-void destroy_textures(t_progr *progr, t_mapp *config) {
-    destroy_texture(progr, &config->north_texture);
-    destroy_texture(progr, &config->south_texture);
-    destroy_texture(progr, &config->west_texture);
-    destroy_texture(progr, &config->east_texture);
-
-    free(config->north_texture_path);
-    free(config->south_texture_path);
-    free(config->west_texture_path);
-    free(config->east_texture_path);
-
-    config->north_texture_path = NULL;
-    config->south_texture_path = NULL;
-    config->west_texture_path = NULL;
-    config->east_texture_path = NULL;
-}*/
-
 
 void	free_map_array(char **map_array, int map_size)
 {

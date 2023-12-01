@@ -12,7 +12,8 @@
 
 NAME = cub3D
 SRC = cub3D.c window.c hooks.c struct.c raycasting_1.c draw.c check_map.c main_parsing.c \
-parsing_file1.c parsing_file2.c utils.c tab_to_space.c textures.c exit.c animation.c
+parsing_file1.c parsing_file2.c utils.c tab_to_space.c textures.c exit.c animation.c \
+utils_bis.c main_init.c input.c hooks_bis.c raycasting_2.c
 OBJ = $(SRC:.c=.o)
 
 CC = gcc

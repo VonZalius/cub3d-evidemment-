@@ -19,25 +19,20 @@ void	ft_put_pixel_to_img(t_progr *progr, int x, int y, int color)
 	int		endian;
 	char	*buffer;
 	int		pixel;
-	//int color;
 
 	buffer = mlx_get_data_addr(progr->map.image,
 			&pixel_bits, &line_bytes, &endian);
-	//color = 0xABCDEF;
-
 	if (pixel_bits != 32)
 		color = mlx_get_color_value(progr->mlx, color);
-
 	pixel = (y * line_bytes) + (x * 4);
-
-	if (endian == 1)        // Most significant (Alpha) byte first
+	if (endian == 1)
 	{
 		buffer[pixel + 0] = (color >> 24);
 		buffer[pixel + 1] = (color >> 16) & 0xFF;
 		buffer[pixel + 2] = (color >> 8) & 0xFF;
 		buffer[pixel + 3] = (color) & 0xFF;
 	}
-	else if (endian == 0)   // Least significant (Blue) byte first
+	else if (endian == 0)
 	{
 		buffer[pixel + 0] = (color) & 0xFF;
 		buffer[pixel + 1] = (color >> 8) & 0xFF;
@@ -72,8 +67,6 @@ void	ft_remplissage(t_progr *progr)
 		}
 		y++;
 	}
-	//mlx_put_image_to_window(progr->mlx, progr->window.ref, progr->map.image, 0, 0);
-	//mlx_loop(progr->mlx);
 }
 
 	///PENSER A FREE ICI AUSSI

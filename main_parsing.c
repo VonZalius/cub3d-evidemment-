@@ -48,35 +48,14 @@ void	ft_init(t_mapp *config)
 
 int	main_parsing(int argc, char **argv, t_mapp *config)
 {
-	//t_progr	progr;
-	//t_mapp	config;
-
 	ft_check_args(argc, argv);
 	ft_init(config);
 	ft_check_file(argv, config);
 	if (ft_map_valid(config) == 1)
-	{
-		/*progr.mlx = mlx_init();
-		progr.window = ft_new_window(progr.mlx, 1980, 1080, "so_long");
-		progr.img = ft_new_sprite(progr.mlx, "xpm/player.xpm");
-		progr.img_position.x = 100;
-		progr.img_position.y = 100;
-		mlx_put_image_to_window(progr.mlx, progr.window.ref,
-			progr.img.ref, progr.img_position.x, progr.img_position.y);
-		mlx_key_hook(progr.window.ref, *ft_input, &progr);
-		mlx_loop_hook(progr.mlx, *ft_anime, &progr);
-		mlx_loop(progr.mlx);*/
 		return (0);
-	}
 	else
 	{
 		printf("Error\nMap is not valid.\n");
-		/*free_map_array(config->map_array, config->map_size);
-		free(config->north_texture_path);
-		free(config->south_texture_path);
-		free(config->west_texture_path);
-		free(config->east_texture_path);
-		free(config);*/
 		return (1);
 	}
 }

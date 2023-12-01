@@ -226,5 +226,11 @@ void			trim_trailing_whitespace(char *str);
 void			destroy_textures(t_progr *progr, t_mapp *config);
 void			free_map_array(char **map_array, int map_size);
 void    		ft_animation(t_progr *progr);
+int				ft_no_player();
+int				main_init_1(t_progr *progr, int argc, char **argv);
+char			*array_to_char(char **array);
+int				ft_input(t_progr *progr);
+int				ft_collide(double x, double y, t_progr *progr);
+void			init_for_calc(t_progr *cube, t_element *node);
 
 #endif

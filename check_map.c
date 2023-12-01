@@ -128,9 +128,5 @@ int	ft_map_valid(t_mapp *config)
 		}
 	}
 	else
-	{
-		printf("Error\nPlayer is not valid or not found.\n");
-		printf("Check also if the map exist.\n");
-		exit (EXIT_FAILURE);
-	}
+		return (ft_no_player());
 }

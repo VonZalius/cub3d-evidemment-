@@ -34,14 +34,6 @@ int	count_tabs(const char *line)
 	return (count);
 }
 
-/*char	*allocate_new_line(const char *line, int tab_count)
-{
-	int	new_len;
-
-	new_len = strlen(line) + 3 * tab_count;
-	return ((char *)malloc(new_len + 1));
-}*/
-
 char	*allocate_new_line(const char *line, int tab_count)
 {
 	int		new_len;

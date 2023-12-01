@@ -63,16 +63,6 @@ int	parse_line(char *line, t_mapp *config)
 	if (config->config_done == 1 && process_map_line(line, config))
 		return (0);
 	printf("Error\nInvalid or incomplete configuration elements\n");
-	/*FREE A GERER
-	free(line);
-	free_map_array(config->map_array, config->map_size);
-	free(config->north_texture_path);
-	free(config->south_texture_path);
-	free(config->west_texture_path);
-	free(config->east_texture_path);
-	free(config);
-	free(config->sprite_texture_path);
-	free(config->map_array);*/
 	exit(EXIT_FAILURE);
 }
 

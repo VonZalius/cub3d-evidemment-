@@ -16,30 +16,27 @@ int	ft_get_color(t_progr *cube, t_element *node, double x_p, double y_p)
 {
 	int	color;
 
-	x_p = x_p;
-	y_p = y_p;
-	color = 200000;
 	if (node->side == 1)
 	{
 		if (node->ray_dir_y < 0)
 			color = get_pixel_color(&cube->mapp.north_texture, (x_p
 						* cube->mapp.north_texture.width), (y_p
-						* cube->mapp.north_texture.height));// Face au SUD
-		if (node->ray_dir_y >= 0)
+						* cube->mapp.north_texture.height));
+		else
 			color = get_pixel_color(&cube->mapp.south_texture,
 					(x_p * cube->mapp.south_texture.width),
-					(y_p * cube->mapp.south_texture.height));// Face au NORD
+					(y_p * cube->mapp.south_texture.height));
 	}
 	else
 	{
 		if (node->ray_dir_x < 0)
 			color = get_pixel_color(&cube->mapp.west_texture,
 					(x_p * cube->mapp.west_texture.width),
-					(y_p * cube->mapp.west_texture.height));// Face à l'EST
-		if (node->ray_dir_x >= 0)
+					(y_p * cube->mapp.west_texture.height));
+		else
 			color = get_pixel_color(&cube->mapp.east_texture,
 					(x_p * cube->mapp.east_texture.width),
-					(y_p * cube->mapp.east_texture.height));// Face à l'OUEST
+					(y_p * cube->mapp.east_texture.height));
 	}
 	return (color);
 }
