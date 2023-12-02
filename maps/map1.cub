@@ -1,10 +1,10 @@
-NO ./texture/owl.xpm
-SO ./texture/dragon2.xpm
-WE ./texture/tree.xpm
-EA ./texture/wall.xpm
+NO ./textures/m_dark.xpm
+SO ./textures/m_planks_2.xpm
+WE ./textures/m_trap_2.xpm
+EA ./textures/m_trap.xpm
 
-F 255,255,255
-C 25,0,255
+F 130,130,130
+C 42,170,138
 
         1111111111111111111111111
         1000000000110000000000001

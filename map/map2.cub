@@ -1,10 +1,10 @@
-NO ./textures/greystone.xpm
-SO ./textures/torch.xpm
-WE ./textures/redbrick.xpm
-EA ./textures/wood.xpm
+NO ./textures/m_planks_2.xpm
+SO ./textures/m_planks_1.xpm
+WE ./textures/m_planks_3.xpm
+EA ./textures/m_trap.xpm
 
-F 220,100,0
-C 225,30,0
+F 130,130,130
+C 42,170,138
 
         1111111111111111111111111
         1000000000110000000000001
