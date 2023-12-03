@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:04:31 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/28 00:38:53 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/12/03 13:31:08 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void ft_input_3(t_progr *progr, double xs, double ys)
+void	ft_input_3(t_progr *progr, double xs, double ys)
 {
 	if (ft_collide(xs, ys, progr) == 0)
-		{
-			progr->player.co_x = xs;
-			progr->player.co_y = ys;
-		}
+	{
+		progr->player.co_x = xs;
+		progr->player.co_y = ys;
+	}
 }
 
-void ft_input_2(t_progr *progr, double xs, double ys)
+void	ft_input_2(t_progr *progr, double xs, double ys)
 {
 	if (progr->key_states[KEY_D] == 1)
 	{
@@ -49,7 +49,7 @@ void ft_input_2(t_progr *progr, double xs, double ys)
 	}
 }
 
-void	ft_input_5(t_progr *progr, double	save)
+void	ft_input_5(t_progr *progr, double save)
 {
 	if (progr->key_states[KEY_LEFT] == 1)
 	{
@@ -68,7 +68,7 @@ void	ft_input_5(t_progr *progr, double	save)
 	}
 }
 
-void	ft_input_4(t_progr *progr, double	save)
+void	ft_input_4(t_progr *progr, double save)
 {
 	if (progr->key_states[KEY_RIGHT] == 1)
 	{

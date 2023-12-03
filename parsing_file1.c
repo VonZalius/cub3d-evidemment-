@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 18:30:32 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/29 19:43:57 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/12/03 13:32:42 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	process_map_line(char *line, t_mapp *config)
 {
 	if (!contains_digit(line))
 		return (1);
-
 	config->map_array = parse_map(line, config->map_array, &config->map_size);
 	if (!config->map_array)
 		return (-1);

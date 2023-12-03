@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 18:55:12 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/28 00:38:54 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/12/03 13:34:00 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	destroy_textures_bis(t_mapp *config)
 
 void	destroy_textures(t_progr *progr, t_mapp *config)
 {
-	if(progr->mlx)
+	if (progr->mlx)
 		return ;
 	if (config->north_texture.img_ptr != NULL)
 	{
@@ -75,4 +75,3 @@ void	free_map_array(char **map_array, int map_size)
 	}
 	free(map_array);
 }
-

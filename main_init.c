@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.c                                            :+:      :+:    :+:   */
+/*   main_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:02:19 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/29 19:44:08 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/12/03 13:31:09 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ int	main_init_1(t_progr *progr, int argc, char **argv)
 		printf("Error\nMlx init failed.\n");
 		exit (1);
 	}
-	progr->map.image = mlx_new_image(progr->mlx, progr->window.x, progr->window.y);
+	progr->map.image = mlx_new_image(progr->mlx,
+			progr->window.x, progr->window.y);
 	progr->window = ft_new_window(progr, progr->window.x,
 			progr->window.y, "cub3D");
 	progr->element = creer_liste(progr->map.w_x_c);

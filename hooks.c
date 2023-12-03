@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:04:31 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/28 00:38:53 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/12/03 13:19:50 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_put_wall(t_progr *progr)
 		{
 			if (ft_is_wall(j * progr->map.tiles_edge, k
 					* progr->map.tiles_edge, progr) == 1)
-			ft_put_wall_bis(progr, j, k);
+				ft_put_wall_bis(progr, j, k);
 			i++;
 			j++;
 		}

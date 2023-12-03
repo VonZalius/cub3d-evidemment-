@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 20:14:49 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/26 20:26:12 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/12/03 13:31:20 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,8 @@ void	dda(t_progr *cube, t_element *node)
 			node->map_y += node->step_y;
 			node->side = 1;
 		}
-		//printf ("XXXXXFFF %i %i\n", node->map_y, node->map_x);
 		if (cube->map.map_tab[node->map_y][node->map_x] == '1')
-		{
-			//printf ("FFF\n");
 			node->hit = 1;
-		}
 	}
 }
 

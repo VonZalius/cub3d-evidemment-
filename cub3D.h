@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:01:23 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/28 00:38:57 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/12/03 13:30:58 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,6 @@ typedef struct s_element
 	struct s_element	*suivant;
 }				t_element;
 
-
 typedef struct s_texture
 {
 	void			*img_ptr;
@@ -145,6 +144,10 @@ typedef struct s_mapp
 	t_texture		south_texture;
 	t_texture		west_texture;
 	t_texture		east_texture;
+	t_texture		animation1;
+	t_texture		animation2;
+	t_texture		animation3;
+	t_texture		animation4;
 	char			*north_texture_path;
 	char			*south_texture_path;
 	char			*west_texture_path;
@@ -225,12 +228,14 @@ int				ft_textures(t_mapp *config, t_progr *prog);
 void			trim_trailing_whitespace(char *str);
 void			destroy_textures(t_progr *progr, t_mapp *config);
 void			free_map_array(char **map_array, int map_size);
-void    		ft_animation(t_progr *progr);
-int				ft_no_player();
+void			ft_animation(t_progr *progr);
+int				ft_no_player(void);
 int				main_init_1(t_progr *progr, int argc, char **argv);
 char			*array_to_char(char **array);
 int				ft_input(t_progr *progr);
 int				ft_collide(double x, double y, t_progr *progr);
 void			init_for_calc(t_progr *cube, t_element *node);
+int				load_texture(t_texture *texture,
+					char *file_path, void *mlx_ptr);
 
 #endif

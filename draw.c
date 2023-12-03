@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 20:20:55 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/26 20:26:03 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/12/03 13:31:05 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ void	ft_draw_2(t_progr *cube, t_element *node, int y_w)
 				+ (cube->map.w_y_c / 2)));
 	color = ft_get_color(cube, node, x_p, y_p);
 	ft_put_pixel_to_img(cube, x_w, y_w, color);
-	//if (y_w % 100 == 0)
-		//printf("\n X = %f : Y = %f : N = %d\n", x_p, y_p, node->draw_end - node->draw_start);
 }
 
 void	ft_draw(t_progr *cube, t_element *node)
@@ -70,5 +68,4 @@ void	ft_draw(t_progr *cube, t_element *node)
 		ft_draw_2(cube, node, i);
 		i++;
 	}
-	//printf("\n END ; X = %f : Y = %f : N = %d\n", node->wall_x, ((double)i - node->draw_start - 1) / (node->draw_end - node->draw_start), node->draw_end - node->draw_start);
 }

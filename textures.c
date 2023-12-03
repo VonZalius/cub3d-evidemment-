@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:45:17 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/29 19:03:06 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/12/03 13:31:15 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,12 @@ int	load_texture(t_texture *texture, char *file_path, void *mlx_ptr)
 	if (!texture->img_ptr)
 	{
 		printf("Error\nInvalid textures\n");
-		/*free(file_path);
-		free(mlx_ptr);
-		free(texture->img_ptr);*/
 		exit (EXIT_FAILURE);
 	}
 	texture->data = (unsigned int *)mlx_get_data_addr(texture->img_ptr,
 			&bpp, &size_line, &endian);
 	return (1);
 }
-
 
 // Charge toutes les textures nécessaires
 int	ft_textures(t_mapp *config, t_progr *prog)

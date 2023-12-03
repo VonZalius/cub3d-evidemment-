@@ -6,7 +6,7 @@
 /*   By: cmansey <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 18:33:51 by cmansey           #+#    #+#             */
-/*   Updated: 2023/11/29 18:49:13 by cmansey          ###   ########.fr       */
+/*   Updated: 2023/12/03 13:32:31 by cmansey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ char	**add_convline_to_map(char *converted_line, char **map_array, int *size)
 	map_array[++(*size)] = NULL;
 	return (map_array);
 }
-
 
 char	**parse_map(char *line, char **map_array, int *size)
 {
