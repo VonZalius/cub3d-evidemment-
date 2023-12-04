@@ -27,7 +27,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@make -C $(LIBFT) > /dev/null 2>&1
 	@$(MAKE) -C mlx/ > /dev/null 2>&1
-	$(CC) $(CCFLAGS) $(OBJ) -L$(LIBFT) -lft -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -o $(NAME)
+	$(CC) $(CCFLAGS) $(OBJ) -L$(LIBFT) -lft -Lmlx -lmlx -Imlx -Iincludes -framework OpenGL -framework AppKit -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CCFLAGS) -I/usr/include -Imlx -O3 -c $< -o $@

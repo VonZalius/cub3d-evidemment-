@@ -93,6 +93,7 @@ int	ft_input(t_progr *progr)
 	double	xs;
 	double	ys;
 
+	save = 0;
 	xs = progr->player.co_x;
 	ys = progr->player.co_y;
 	ft_input_2(progr, xs, ys);
@@ -101,7 +102,6 @@ int	ft_input(t_progr *progr)
 		destroy_textures(progr->mlx, &progr->mapp);
 		free_map_array(progr->mapp.map_array, progr->mapp.map_size);
 		mlx_destroy_window(progr->mlx, progr->window.ref);
-		mlx_destroy_display(progr->mlx);
 		free(progr->mlx);
 		exit(0);
 	}

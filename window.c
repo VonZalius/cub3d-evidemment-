@@ -75,7 +75,6 @@ int	ft_close(t_progr *progr)
 	destroy_textures(progr->mlx, &progr->mapp);
 	free_map_array(progr->mapp.map_array, progr->mapp.map_size);
 	mlx_destroy_window(progr->mlx, progr->window.ref);
-	mlx_destroy_display(progr->mlx);
 	free(progr->mlx);
 	exit (0);
 }
